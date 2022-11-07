@@ -21,6 +21,12 @@
             <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.atguigu</groupId>
+            <artifactId>service_base</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!--hystrix依赖，主要是用  @HystrixCommand -->
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.cloud</groupId>-->
