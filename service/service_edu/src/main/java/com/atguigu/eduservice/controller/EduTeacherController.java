@@ -68,7 +68,7 @@ public class EduTeacherController {
 
         // 创建page对象
         Page<EduTeacher> pageTeacher = new Page<>(current,limit);
-        
+
         // 调用方法，底层封装，把分页所有数据封装到pageTeacher里面去
         eduTeacherService.page(pageTeacher,null);
         long total = pageTeacher.getTotal(); // 总记录数
