@@ -28,7 +28,8 @@ import java.util.Map;
  */
 @Api(description="讲师管理")
 @RestController
-@RequestMapping("/eduservice/edu-teacher")
+@RequestMapping("/eduservice/teacher")
+@CrossOrigin
 public class EduTeacherController {
 
     // 注入service
@@ -80,7 +81,7 @@ public class EduTeacherController {
     }
 
     // 4 条件查询带分页的功能
-    @PostMapping("PageTeacherCondition/{current}/{limit}")
+    @PostMapping("pageTeacherCondition/{current}/{limit}")
     public R pageTeacherCondition(@PathVariable long current,@PathVariable long limit,
                                   @RequestBody(required = false) TeacherQuery teacherQuery){
         // 创建page对象
@@ -106,6 +107,10 @@ public class EduTeacherController {
         if(!StringUtils.isEmpty(end)){
             wrapper.le("gmt_modified",end);
         }
+        // 排序
+        wrapper.orderByDesc("gmt_modified");
+
+        // 调用方法查询分页
         eduTeacherService.page(pageTeacher,wrapper);
         long total = pageTeacher.getTotal(); // 总记录数
         List<EduTeacher> records = pageTeacher.getRecords(); //总记录数
